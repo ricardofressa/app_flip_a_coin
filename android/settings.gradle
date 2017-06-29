@@ -1,0 +1,3 @@
+rootProject.name = 'app_flip_a_coin'
+
+include ':app'
