@@ -1,53 +1,51 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
+  Image,
   View
 } from 'react-native';
 
-export default class app_flip_a_coin extends Component {
+const logo = require('./src/imgs/logo.png');
+const imgBtnPlayer = require('./src/imgs/botao_jogar.png');
+const imgAboutGame = require('./src/imgs/sobre_jogo.png');
+const imgOtherGame = require('./src/imgs/outros_jogos.png');
+
+
+export default class FlipACoin extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View style={styles.mainSchene}>
+        <View style={styles.mainGame}>
+          <Image source={logo} />
+          <Image source={imgBtnPlayer} />
+        </View>
+
+        <View style={styles.footer}>
+          <Image source={imgAboutGame} />
+          <Image source={imgOtherGame} />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+
+  mainSchene: {
     flex: 1,
+    backgroundColor: '#61BD8C'
+  },
+  mainGame: {
+    flex: 10,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  footer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
 });
 
-AppRegistry.registerComponent('app_flip_a_coin', () => app_flip_a_coin);
+AppRegistry.registerComponent('app_flip_a_coin', () => FlipACoin);
