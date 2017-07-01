@@ -1,51 +1,22 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Image,
-  View
-} from 'react-native';
+import { AppRegistry } from 'react-native';
+import { Router, Scene } from 'react-native-router-flux';
 
-const logo = require('./src/imgs/logo.png');
-const imgBtnPlayer = require('./src/imgs/botao_jogar.png');
-const imgAboutGame = require('./src/imgs/sobre_jogo.png');
-const imgOtherGame = require('./src/imgs/outros_jogos.png');
+import { MainSchene } from './src/components/MainSchene.js';
+import { OthersGames } from './src/components/OthersGames.js';
+import { AboutGame } from './src/components/AboutGame.js';
 
 
 export default class FlipACoin extends Component {
   render() {
     return (
-      <View style={styles.mainSchene}>
-        <View style={styles.mainGame}>
-          <Image source={logo} />
-          <Image source={imgBtnPlayer} />
-        </View>
-
-        <View style={styles.footer}>
-          <Image source={imgAboutGame} />
-          <Image source={imgOtherGame} />
-        </View>
-      </View>
+      <Router sceneStyle={{ paddingTop: 50 }}>
+        <Scene key='mainschene' component={MainSchene} title='Cara ou coroa' initil />
+        <Scene key='othergame' component={OthersGames} title='Outros Games' />
+        <Scene key='aboutgame' component={AboutGame} title='Sobre o Game' />
+      </Router>
     );
   }
 }
-
-const styles = StyleSheet.create({
-
-  mainSchene: {
-    flex: 1,
-    backgroundColor: '#61BD8C'
-  },
-  mainGame: {
-    flex: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  footer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  }
-});
 
 AppRegistry.registerComponent('app_flip_a_coin', () => FlipACoin);
